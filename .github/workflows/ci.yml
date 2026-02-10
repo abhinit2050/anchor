@@ -1,0 +1,13 @@
+name: Day 1 CI Check
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say hello
+        run: echo "CI is working 🎉"
