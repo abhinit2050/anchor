@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import { useRole, type Role } from "../auth/useRole"
 import { Navigate } from "react-router-dom"
+import { useRoleContext } from "../auth/RoleContext"
 
 
 type ProtectedRouteProps = {
@@ -11,7 +12,8 @@ type ProtectedRouteProps = {
 
 
 export const ProtectedRoute = ({allowedRoles, children}: ProtectedRouteProps) =>{
-    const role = useRole();
+    
+    const {role} = useRoleContext()
     
     if(!allowedRoles.includes(role)){
         
