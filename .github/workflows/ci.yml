@@ -1,4 +1,4 @@
-name: Day 1 CI Check
+name: Day 2 CI Check
 
 on:
   push:
@@ -9,5 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: echo "CI is working 🎉"
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Say hello
+      run: echo "Node version is set"
