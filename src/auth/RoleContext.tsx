@@ -1,18 +1,26 @@
-import { createContext, useContext, type ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import type { Role } from "./useRole"
 
 type RoleContextType = {
-    role: Role
+    role: Role,
+    setRole:(role:Role)=>void
 }
 
 const RoleContext = createContext<RoleContextType|undefined>(undefined)
 
 export const RoleProvider = ({children}:{children:ReactNode}) => {
+
+    console.log("RoleProvider rendered");
   
-    const role: Role = "user"
+  const [role,setRole] = useState<Role>("user");
+
+  useEffect(() => {
+    console.log("RoleProvider MOUNT")
+    return () => console.log("RoleProvider UNMOUNT")
+  }, [])
 
   return (
-    <RoleContext.Provider value={{ role }}>
+    <RoleContext.Provider value={{ role, setRole }}>
       {children}
     </RoleContext.Provider>
   )

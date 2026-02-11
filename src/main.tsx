@@ -3,11 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { AppRouter } from './router/AppRouter.tsx'
 import { RoleProvider } from './auth/RoleContext.tsx'
+import { RoleSwitcher } from './auth/RoleSwitcher.tsx'
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <>
     <RoleProvider>
+      <RoleSwitcher />
       <AppRouter />
     </RoleProvider>
-  </StrictMode>,
+  </>,
 );
