@@ -14,8 +14,6 @@ type ProtectedRouteProps = {
 export const ProtectedRoute = ({allowedRoles, children}: ProtectedRouteProps) =>{
     
     const {role} = useRoleContext()
-
-    console.log("current role", role);
     
     if(!allowedRoles.includes(role)){
         

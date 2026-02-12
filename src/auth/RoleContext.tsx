@@ -10,13 +10,12 @@ const RoleContext = createContext<RoleContextType|undefined>(undefined)
 
 export const RoleProvider = ({children}:{children:ReactNode}) => {
 
-    console.log("RoleProvider rendered");
   
   const [role,setRole] = useState<Role>("user");
 
   useEffect(() => {
-    console.log("RoleProvider MOUNT")
-    return () => console.log("RoleProvider UNMOUNT")
+   
+    return () =>{}
   }, [])
 
   return (
