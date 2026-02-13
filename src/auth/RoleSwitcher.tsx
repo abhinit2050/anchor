@@ -11,7 +11,7 @@ export const RoleSwitcher = () => {
 
   return (
     <div style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>
-    
+        
       <button onClick={toggleRole}>Toggle Role</button>
     </div>
   )
