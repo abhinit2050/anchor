@@ -4,12 +4,14 @@ import Dashboard from "../pages/Dashboard.tsx";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { Nav } from "../components/Nav.tsx";
 import { RoleSwitcher } from "../auth/RoleSwitcher.tsx";
+import ThemeToggle from "../ui/ThemeToggle.tsx";
 
 export const AppRouter = ()=>{
 return (
      <BrowserRouter>
     <Nav/> 
      <RoleSwitcher />
+     <ThemeToggle />
     <Routes>
         <Route path="/" element = {<Home />} />
         <Route path="/dashboard" 

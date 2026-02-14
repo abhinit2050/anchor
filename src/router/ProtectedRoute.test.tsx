@@ -4,11 +4,13 @@ import { ProtectedRoute } from "./ProtectedRoute"
 import Home from "../pages/Home"
 import Dashboard from "../pages/Dashboard"
 import { RoleProvider } from "../auth/RoleContext"
+import { ThemeProvider } from "../ui/themeContext"
 
 
 
 test("redirects non-admin user to home", () => {
   render(
+    <ThemeProvider>
     <RoleProvider>
     <MemoryRouter initialEntries={["/dashboard"]}>
       <Routes>
@@ -24,6 +26,7 @@ test("redirects non-admin user to home", () => {
       </Routes>
     </MemoryRouter>
     </RoleProvider>
+    </ThemeProvider>
   )
 
   expect(screen.getByText("Home Page")).toBeInTheDocument()
