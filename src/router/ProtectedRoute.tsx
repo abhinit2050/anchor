@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import { useRole, type Role } from "../auth/useRole"
+import {  type Role } from "../auth/useRole"
 import { Navigate } from "react-router-dom"
 import { useRoleContext } from "../auth/RoleContext"
 
