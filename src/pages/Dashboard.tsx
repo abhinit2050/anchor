@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTheme } from "../ui/themeContext";
 import { slowSum } from "../utils/slowSum"
 import ClickLogger from "../components/ClickLogger";
+import { Demo } from "../dev/Demo";
 
 const Dashboard = () => {
 
@@ -17,11 +18,6 @@ const Dashboard = () => {
 
   renderCount.current += 1;
 
-  console.log("Dashboard renders", renderCount.current);
-  console.log("Prev theme:", prevTheme.current);
-  console.log("Current theme:", state.theme);
-
-
   const handleClick = useCallback(()=>{
     console.log("clicked!");
   },[])
@@ -32,6 +28,7 @@ const Dashboard = () => {
     <div>Theme:{state.theme}</div>
     <div>Slow sum:{result}</div>
     <ClickLogger onClick={handleClick}/>
+    <Demo />
     </>
   )
 }
