@@ -11,7 +11,7 @@ const MeasureDemo = ()=>{
     return(
         <>
               <div ref={boxRef} style={{ width: 200, height: 100 }} />
-              <button onClick={logWidth}>Log Width</button>
+              <button onClick={logWidth}>Log Width for me</button>
         </>
     )
 }
