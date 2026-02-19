@@ -3,6 +3,7 @@ import { useTheme } from "../ui/themeContext";
 import { slowSum } from "../utils/slowSum"
 import ClickLogger from "../components/ClickLogger";
 import { Demo } from "../dev/Demo";
+import usePrevious from "../hooks/usePrevious";
 
 const Dashboard = () => {
 
@@ -11,9 +12,15 @@ const Dashboard = () => {
   const result = useMemo (()=>slowSum(),[])
   const renderCount = useRef<number>(0);
   const prevTheme = useRef<string | null>(null);
+   const prev = usePrevious(state.theme);
 
   useEffect(()=>{
     prevTheme.current = state.theme
+  },[state.theme])
+
+  useEffect(()=>{
+    console.log("curent theme", state.theme);
+    console.log("prev theme", prev);
   },[state.theme])
 
   renderCount.current += 1;
