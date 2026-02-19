@@ -1,6 +1,7 @@
 import FocusDemo from "../dev/FocusDemo";
 import MeasureDemo from "../dev/MeasureDemo";
 import { useTheme } from "../ui/themeContext"
+import Trial from "./Trial";
 
 const Home = () => {
 
@@ -13,6 +14,8 @@ const Home = () => {
     <div>Current Theme: {state?.theme}</div>
       <FocusDemo />
       <MeasureDemo />
+      <Trial />
+      
     </>
   )
 }
