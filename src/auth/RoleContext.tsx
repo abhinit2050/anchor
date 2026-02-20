@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import type { Role } from "./useRole"
+import { useLocalStorage } from "../hooks/useLocalStorage"
 
 type RoleContextType = {
     role: Role,
@@ -11,7 +12,10 @@ const RoleContext = createContext<RoleContextType|undefined>(undefined)
 export const RoleProvider = ({children}:{children:ReactNode}) => {
 
   
-  const [role,setRole] = useState<Role>("user");
+  // const [role,setRole] = useState<Role>("user");
+
+  const [role, setRole] = useLocalStorage<Role>("role", "user");
+
 
   useEffect(() => {
    

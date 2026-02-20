@@ -6,6 +6,8 @@ export const Nav = ()=>{
 
     const {role} = useRoleContext();
 
+  
+
     return (
         <nav style={{ display: "flex", gap: "12px" }}>
             <Link to="/">Home</Link>
