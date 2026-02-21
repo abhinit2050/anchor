@@ -59,12 +59,27 @@ jobs:
           source: "dist"
           target: "/var/www/react-ci-temp"
 
-      - name: Activate new build
+      - name: Activate new build (atomic)
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            rm -rf /var/www/react-ci/*
-            cp -r /var/www/react-ci-temp/dist/* /var/www/react-ci/
+            set -e
+
+            RELEASE_ID=$(date +%Y%m%d-%H%M%S)
+            RELEASE_DIR=/var/www/react-ci/releases/$RELEASE_ID
+
+            echo "Creating release folder $RELEASE_DIR"
+            mkdir -p $RELEASE_DIR
+
+            echo "Copying build to release"
+            cp -r /var/www/react-ci-temp/dist/* $RELEASE_DIR/
+
+            echo "Switching current symlink"
+            ln -sfn $RELEASE_DIR /var/www/react-ci/current
+
+            echo "Deployment complete"
+            echo "Cleaning old releases"
+            ls -dt /var/www/react-ci/releases/* | tail -n +6 | xargs -r rm -rf
