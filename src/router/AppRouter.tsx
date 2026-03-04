@@ -5,8 +5,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { Nav } from "../components/Nav.tsx";
 import { RoleSwitcher } from "../auth/RoleSwitcher.tsx";
 import ThemeToggle from "../ui/ThemeToggle.tsx";
-import { Provider } from "react-redux";
-import { store } from "../store/store.ts";
+
 
 export const AppRouter = ()=>{
 return (
