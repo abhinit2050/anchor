@@ -3,11 +3,11 @@ import { useEffect,  useState } from "react"
 
 export const useDebounce = <T>(value:T, delay:number):T=>{
    
-    const [debouncedValue, setDebo8uncedValue] = useState(value);
+    const [debouncedValue, setDebouncedValue] = useState(value);
 
     useEffect(()=>{
         const timerId = setTimeout(()=>{
-            setDebo8uncedValue(value)
+            setDebouncedValue(value)
         },delay)
 
         return ()=>{clearTimeout(timerId)}

@@ -4,10 +4,17 @@ import { slowSum } from "../utils/slowSum"
 import ClickLogger from "../components/ClickLogger";
 import { Demo } from "../dev/Demo";
 import usePrevious from "../hooks/usePrevious";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { increment } from "../features/dashboard/dashboardSlice";
 
 const Dashboard = () => {
 
   const {state} = useTheme();
+
+  const dispatch = useAppDispatch();
+  const count = useAppSelector((state)=>state.dashboard.count);
+
+
   
   const result = useMemo (()=>slowSum(),[])
   const renderCount = useRef<number>(0);
@@ -34,7 +41,14 @@ const Dashboard = () => {
     <div>Dashboard 1</div>
     <div>Theme:{state.theme}</div>
     <div>Slow sum:{result}</div>
-    <ClickLogger onClick={handleClick}/>
+    <p>Count: {count}</p>
+    <button onClick={() => dispatch(increment())}>
+      Increment by Redux
+    </button>
+    <div>
+       <ClickLogger onClick={handleClick}/>
+    </div>
+   
     <Demo />
     </>
   )

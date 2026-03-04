@@ -10,7 +10,7 @@ const ClickLogger = ({onClick}:Props)=>{
     console.log("ClickLogger rendered!")
 
     return(<>
-        <button onClick={onClick}>Click Me</button>
+        <button onClick={onClick}>Click Me Memo</button>
     </>)
 }
 
