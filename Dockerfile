@@ -19,6 +19,9 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy built app from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -qO- http://localhost || exit 1
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
