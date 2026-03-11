@@ -12,6 +12,7 @@ export const Nav = ()=>{
         <nav style={{ display: "flex", gap: "12px" }}>
             <Link to="/">Home</Link>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/notifications">Notifications</Link>
             <span>Role: {role}</span>
         </nav>
     )

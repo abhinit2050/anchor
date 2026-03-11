@@ -5,6 +5,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { Nav } from "../components/Nav.tsx";
 import { RoleSwitcher } from "../auth/RoleSwitcher.tsx";
 import ThemeToggle from "../ui/ThemeToggle.tsx";
+import Notifications from "../pages/Notifications.tsx";
 
 
 export const AppRouter = ()=>{
@@ -24,6 +25,7 @@ return (
             }
         
         />
+        <Route path="/notifications" element={<Notifications />} />
        
     </Routes>
     
