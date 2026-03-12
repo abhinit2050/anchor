@@ -13,6 +13,7 @@ export const Nav = ()=>{
             <Link to="/">Home</Link>
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/notifications">Notifications</Link>
+             <Link to="/posts">Posts</Link>
             <span>Role: {role}</span>
         </nav>
     )

@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import dashboardReducer from "../features/dashboard/dashboardSlice";
 import notificationsReducer from "../features/notfications/notificationsSlice";
+import { api } from "../services/api";
 
 export const store = configureStore({
     reducer:{
         dashboard: dashboardReducer,
-        notifications:notificationsReducer
-    }
+        notifications:notificationsReducer,
+        [api.reducerPath]:api.reducer
+    },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware)
 })
 
 
