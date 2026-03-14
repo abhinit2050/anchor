@@ -18,6 +18,22 @@ export const api = createApi({
             method: "POST",
             body: newPost,
         }),
+        async onQueryStarted(newPost, { dispatch, queryFulfilled }) {
+            const patchResult = dispatch(
+              api.util.updateQueryData("getPosts", undefined, (draft) => {
+                draft.unshift({
+                  id: Date.now(),
+                  ...newPost,
+                });
+              }),
+            );
+            try {
+            await queryFulfilled
+            } catch (err) {
+            console.error("Post failed")
+            patchResult.undo()
+            }
+    },
         invalidatesTags:["Posts"]
     })
   })
